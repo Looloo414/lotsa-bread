@@ -18,22 +18,27 @@ function show(req, res) {
     Bread.findById(req.params.id)
     .then((bread) => {
         res.status(200).json(bread)
-    })
-
-    
+    }) 
 }
 
 function create(req, res) {
-    Bread.findById(req.params.id)
+    Bread.create(req.body)
     .then((bread) => {
-        res.status(200).json(bread)
+        res.status(201).json(bread)
     })
 }
 
 function update(req, res) {
+    Bread.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .then((bread) => {
+        res.status(200).json(bread)
+    })
     
 }
 
 function deleteBread(req, res) {
-    
+    Bread.findByIdAndDelete(req.params.id)
+    .then((bread) => {
+        res.status(200).json(bread)
+    })
 }
