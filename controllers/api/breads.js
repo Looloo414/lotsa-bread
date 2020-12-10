@@ -1,4 +1,4 @@
-const Puppy = require('../../models/bread')
+const Bread = require('../../models/bread')
 
 module.exports = {
     index,
@@ -9,15 +9,25 @@ module.exports = {
 }
 
 function index(req, res) {
-
+    Bread.find({}, function(err, breads) {
+        res.status(200).json(breads)
+    })
 }
 
 function show(req, res) {
+    Bread.findById(req.params.id)
+    .then((bread) => {
+        res.status(200).json(bread)
+    })
+
     
 }
 
 function create(req, res) {
-    
+    Bread.findById(req.params.id)
+    .then((bread) => {
+        res.status(200).json(bread)
+    })
 }
 
 function update(req, res) {
